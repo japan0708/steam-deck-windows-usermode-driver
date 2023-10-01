@@ -25,7 +25,7 @@ namespace SWICD.Services
                         var xboxAxis = GetXbox360Axis(axisConf.EmulatedAxis);
                         var xboxSlider = GetXbox360Slider(axisConf.EmulatedAxis);
                         if (xboxAxis != null)
-                            controller.SetAxisValue(xboxAxis, axisConf.Inverted ? (Int16)(Int16.MaxValue - input.AxesState[axis]) : input.AxesState[axis]);
+                            controller.SetAxisValue(xboxAxis, axisConf.Inverted ? (Int16)(input.AxesState[axis] * -1) : input.AxesState[axis]);
                         if (xboxSlider != null)
                             controller.SetSliderValue(xboxSlider, axisConf.Inverted ? (byte)(byte.MaxValue - (input.AxesState[axis] / (double)Int16.MaxValue * byte.MaxValue)) : (byte)(input.AxesState[axis] / (double)Int16.MaxValue * byte.MaxValue));
                     }
